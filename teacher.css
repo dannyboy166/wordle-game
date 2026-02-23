@@ -1,0 +1,839 @@
+/* =============================================
+   TEACHER PORTAL - SASCO Wordle
+   ============================================= */
+
+:root {
+    --primary: #72a4de;
+    --primary-dark: #5a8ac7;
+    --primary-light: #a4c4eb;
+    --secondary: #4ade80;
+    --secondary-dark: #22c55e;
+    --background: #f0f4f8;
+    --card-bg: #ffffff;
+    --text: #1a1a2e;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --danger: #ef4444;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =============================================
+   HEADER
+   ============================================= */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.back-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    transition: all 0.2s;
+}
+
+.back-link:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.back-arrow {
+    font-size: 1.2em;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.logo-icon {
+    font-size: 3em;
+}
+
+.logo-text h1 {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.tagline {
+    color: var(--text-light);
+    font-size: 1em;
+}
+
+/* =============================================
+   CARDS
+   ============================================= */
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    border-radius: 50%;
+    font-size: 0.9em;
+}
+
+.step-header h2 {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.card-description {
+    color: var(--text-light);
+    margin-bottom: 16px;
+    font-size: 0.95em;
+}
+
+/* =============================================
+   LENGTH BUTTONS
+   ============================================= */
+.length-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.length-btn {
+    flex: 1;
+    min-width: 100px;
+    padding: 16px 24px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--text);
+    background: var(--background);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.length-btn:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+}
+
+.length-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* =============================================
+   FILTER BUTTONS
+   ============================================= */
+.list-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--text-light);
+    background: var(--background);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-btn:hover {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.filter-btn.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* =============================================
+   SHARED LISTS
+   ============================================= */
+.shared-lists {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.shared-list-item {
+    background: var(--background);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.list-header:hover {
+    background: var(--primary-light);
+}
+
+.list-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.list-name {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.list-count {
+    font-size: 0.85em;
+    color: var(--text-light);
+}
+
+.list-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.play-all-btn {
+    padding: 8px 16px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.85em;
+    font-weight: 500;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.play-all-btn:hover {
+    background: var(--secondary-dark);
+}
+
+.expand-icon {
+    color: var(--text-light);
+    font-size: 0.8em;
+}
+
+/* =============================================
+   EXPANDED LIST
+   ============================================= */
+.expanded-list {
+    padding: 16px;
+    background: var(--card-bg);
+    border-top: 1px solid var(--border);
+}
+
+.list-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.select-all-btn,
+.deselect-all-btn {
+    padding: 6px 12px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.85em;
+    color: var(--primary);
+    background: var(--primary-light);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.select-all-btn:hover,
+.deselect-all-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.word-checkboxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.word-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: var(--background);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+
+.word-checkbox:hover {
+    border-color: var(--primary);
+}
+
+.word-checkbox.checked,
+.word-checkbox:has(input:checked) {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+.word-checkbox input {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.word-checkbox:has(input:checked) .checkbox-custom {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.word-checkbox:has(input:checked) .checkbox-custom::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.word-text {
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+.use-selected-btn {
+    width: 100%;
+    padding: 12px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1em;
+    font-weight: 600;
+    color: white;
+    background: var(--primary);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.use-selected-btn:hover {
+    background: var(--primary-dark);
+}
+
+.no-words-message {
+    text-align: center;
+    color: var(--text-light);
+    padding: 24px;
+    font-style: italic;
+}
+
+/* =============================================
+   CUSTOM WORDS INPUT
+   ============================================= */
+.custom-input-group {
+    margin-bottom: 12px;
+}
+
+.custom-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1em;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.custom-input:focus {
+    border-color: var(--primary);
+}
+
+.input-hint {
+    display: block;
+    margin-top: 8px;
+    color: var(--text-light);
+    font-size: 0.85em;
+}
+
+.custom-words-preview {
+    margin-top: 12px;
+}
+
+.preview-label {
+    display: block;
+    font-size: 0.9em;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+
+.preview-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.word-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    border-radius: 16px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* =============================================
+   GENERATE LINK SECTION
+   ============================================= */
+.selected-summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--background);
+    border-radius: 8px;
+}
+
+.summary-label {
+    color: var(--text-light);
+}
+
+.summary-count {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: var(--primary);
+}
+
+.generate-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 24px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: white;
+    background: var(--secondary);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.generate-btn:hover {
+    background: var(--secondary-dark);
+}
+
+.btn-icon {
+    font-size: 1.2em;
+}
+
+.link-output {
+    margin-top: 20px;
+}
+
+.link-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.link-input {
+    flex: 1;
+    padding: 12px 16px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.9em;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    background: var(--background);
+    color: var(--text);
+}
+
+.copy-btn {
+    padding: 12px 16px;
+    font-family: 'Fredoka', sans-serif;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--primary-dark);
+}
+
+.copy-icon {
+    font-size: 1.1em;
+}
+
+.link-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.action-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.95em;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.open-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.open-btn:hover {
+    background: var(--primary-dark);
+}
+
+.save-btn {
+    background: var(--background);
+    color: var(--text);
+    border: 2px solid var(--border);
+}
+
+.save-btn:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+}
+
+/* =============================================
+   SAVED LISTS
+   ============================================= */
+.saved-lists-card {
+    border-top: 4px solid var(--primary);
+}
+
+.saved-lists {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.saved-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: var(--background);
+    border-radius: 10px;
+}
+
+.saved-list-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.saved-list-name {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.saved-list-meta {
+    font-size: 0.85em;
+    color: var(--text-light);
+}
+
+.saved-list-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.load-btn,
+.play-btn,
+.delete-btn {
+    padding: 8px 14px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.85em;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.load-btn {
+    background: var(--primary-light);
+    color: var(--primary-dark);
+}
+
+.load-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.play-btn {
+    background: var(--secondary);
+    color: white;
+}
+
+.play-btn:hover {
+    background: var(--secondary-dark);
+}
+
+.delete-btn {
+    background: transparent;
+    color: var(--text-light);
+}
+
+.delete-btn:hover {
+    background: var(--danger);
+    color: white;
+}
+
+.no-saved-lists {
+    text-align: center;
+    color: var(--text-light);
+    padding: 24px;
+    font-style: italic;
+}
+
+/* =============================================
+   DIALOG
+   ============================================= */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.dialog {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.dialog h3 {
+    margin-bottom: 16px;
+    color: var(--text);
+    font-size: 1.3em;
+}
+
+.list-name-input {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1em;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.list-name-input:focus {
+    border-color: var(--primary);
+}
+
+.dialog-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.dialog-btn {
+    flex: 1;
+    padding: 12px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.cancel-btn {
+    background: var(--background);
+    color: var(--text);
+}
+
+.cancel-btn:hover {
+    background: var(--border);
+}
+
+.confirm-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.confirm-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+.footer strong {
+    color: var(--primary);
+}
+
+/* =============================================
+   UTILITIES
+   ============================================= */
+.hidden {
+    display: none !important;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 600px) {
+    .container {
+        padding: 12px;
+    }
+
+    .back-link {
+        position: static;
+        margin-bottom: 20px;
+        align-self: flex-start;
+    }
+
+    .logo {
+        margin-top: 0;
+    }
+
+    .logo-icon {
+        font-size: 2.5em;
+    }
+
+    .logo-text h1 {
+        font-size: 1.6em;
+    }
+
+    .length-buttons {
+        flex-direction: column;
+    }
+
+    .length-btn {
+        min-width: auto;
+    }
+
+    .word-checkboxes {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+
+    .link-actions {
+        flex-direction: column;
+    }
+
+    .saved-list-item {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .saved-list-actions {
+        width: 100%;
+    }
+
+    .saved-list-actions button {
+        flex: 1;
+    }
+}
